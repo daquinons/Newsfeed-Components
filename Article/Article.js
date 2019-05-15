@@ -9,10 +9,12 @@ class Article {
     this.domElement = domElement;
     // create a reference to the ".expandButton" class. 
     this.expandButton = this.domElement.querySelector('.expandButton');
+    this.closeButton = this.domElement.querySelector('.closeButton');
     // Using your expandButton reference, update the text on your expandButton to say "expand"
     this.expandButton.textContent = expandText;
     // Set a click handler on the expandButton reference, calling the expandArticle method.
     this.expandButton.addEventListener('click', this.expandArticle.bind(this));
+    this.closeButton.addEventListener('click', this.removeArticle.bind(this));
   }
 
   expandArticle() {
@@ -26,6 +28,10 @@ class Article {
       $(this.domElement).animate({height: 50}, 200);
       this.expandButton.textContent = expandText;
     }
+  }
+
+  removeArticle() {
+    this.domElement.parentNode.removeChild(this.domElement);
   }
 }
 
